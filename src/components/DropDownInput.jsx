@@ -1,8 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Axios from "axios";
+import Card from "./Card";
+import { Link } from "react-router-dom";
 
 function DropDownInput(props) {
     const [reveal, setReveal] = useState(false);
+    const [regionData, setRegionData] = useState([])
+    const [region, setRegion] = useState("");
+
+    useEffect(() => {
+        Axios.get(`https://restcountries.eu/rest/v2/region/${region}`)
+            .then(res => {
+                console.log(res);
+                setRegionData(res.data)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [region])
 
     function DropDown() {
         setReveal(prevValue => {
@@ -25,23 +41,35 @@ function DropDownInput(props) {
                 </button>
 
                 {reveal ? <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li className="dropdown-item">
+                    <li onClick={() => { setRegion("Africa"); setReveal(false) }} className="dropdown-item">
                         Africa
                     </li>
-                    <li className="dropdown-item">
-                        America
+                    <li onClick={() => { setRegion("Americas"); setReveal(false) }} className="dropdown-item">
+                        Americas
                     </li>
-                    <li className="dropdown-item">
+                    <li onClick={() => { setRegion("Asia"); setReveal(false) }} className="dropdown-item">
                         Asia
                     </li>
-                    <li className="dropdown-item">
+                    <li onClick={() => { setRegion("Europe"); setReveal(false) }} className="dropdown-item">
                         Europe
                     </li>
-                    <li className="dropdown-item">
+                    <li onClick={() => { setRegion("Oceania"); setReveal(false) }} className="dropdown-item">
                         Oceania
                     </li>
                 </ul> : null}
             </div>
+            {regionData.map((data, id) => (
+                <Link className="link" to={`/details/${data.name}`}>{
+                    <Card
+                        key={id}
+                        countryFlag={data.flag}
+                        countryName={data.name}
+                        countryPopulation={data.population}
+                        countryRegion={data.region}
+                        countryCapital={data.capital}
+                    />
+                }</Link>
+            ))}
         </div>
     )
 }

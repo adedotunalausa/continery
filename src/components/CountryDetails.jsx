@@ -21,21 +21,21 @@ function CountryDetails({match}) {
     return (
         <div className="details-container">
             <div className="back-btn">
-                <Link to="/">
-                    <ArrowBackIcon fontSize="small" />
+                <Link className="link" to="/">
+                    <ArrowBackIcon className="back-arrow" fontSize="small" />
                     <p>Back</p>
                 </Link>
             </div>
             <div>
                 {countryDetails.map((data) => {
                     return (
-                        <div>
+                        <div className="details-container-inner">
                             <div className="details-flag">
                                 <img src={data.flag} alt="flag-img" />
                             </div>
                             <div className="details-info">
                                 <h1>{data.name}</h1>
-                                <div>
+                                <div className="details-info-inner">
                                     <div className="details-info-1">
                                         <p><b>Native Name:</b> {data.nativeName}</p>
                                         <p><b>Population:</b> {data.population}</p>
@@ -49,9 +49,9 @@ function CountryDetails({match}) {
                                         <p><b>Languages:</b> {data.languages.map(data => <span>{data.name}, </span>)}</p>
                                     </div>
                                 </div>
-                                <div>
-                                    <p><b>Border Countries:</b> </p>
-                                    {data.borders.map(data => <span>{data} </span>)}
+                                <div className="border-countries">
+                                    <h4><b>Border Countries:</b></h4>
+                                    {data.borders.map(data => <p>{data} </p>)}
                                 </div>
                             </div>
                         </div>

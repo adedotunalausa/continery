@@ -4,7 +4,7 @@ function Header(props) {
     return (
         <nav>
             <h1>Where in the world?</h1>
-            <input onClick={props.themeChange} className="theme-input" type="checkbox" id="switch" /><label for="switch">Toggle</label>
+            <input id="dark-theme" onClick={props.addTheme} className="theme-input" type="checkbox" /><label htmlFor="dark-theme">Toggle</label>
         </nav>
     )
 }

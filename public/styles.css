@@ -2,188 +2,292 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-  }
+}
 
-  html {
-      font-family: 'Nunito Sans', sans-serif;
+html {
+    font-family: 'Nunito Sans', sans-serif;
+    --text-color: hsl(200, 15%, 8%);
+    --bg-color: hsl(0, 0%, 98%);
+    --element-color: hsl(0, 0%, 100%);
+    --input-color: hsl(0, 0%, 52%);
+    --text-color-dark: hsl(0, 0%, 100%);
+    --bg-color-dark: hsl(207, 26%, 17%);
+    --element-color-dark: hsl(209, 23%, 22%);
+    --input-color-dark: hsl(209, 23%, 22%);
+}
 
-      --text-color: hsl(200, 15%, 8%);
-      --bg-color: hsl(0, 0%, 98%);
-      --element-color: hsl(0, 0%, 100%);
-      --input-color: hsl(0, 0%, 52%);
-  }
-
-  /* html[data-theme="dark"] {
-    --text-color: hsl(0, 0%, 100%);
-    --bg-color: hsl(207, 26%, 17%);
-    --element-color: hsl(209, 23%, 22%);
-    --input-color: hsl(209, 23%, 22%);
+/* html[data-theme="dark"] {
+    --text-color-dark: hsl(0, 0%, 100%);
+    --bg-color-dark: hsl(207, 26%, 17%);
+    --element-color-dark: hsl(209, 23%, 22%);
+    --input-color-dark: hsl(209, 23%, 22%);
 } */
 
-  body {
-      color: var(--text-color);
-      background: var(--bg-color);
-      padding: 0 1rem;
-  }
+body {
+    color: var(--text-color);
+    background: var(--bg-color);
+}
 
-  nav, .search, .dropdown-btn, .dropdown-menu, .card {
-    box-shadow: 0 2px 6px 0 rgba(0,0,0,.06), 0 -1px 0 0 rgba(0,0,0,.08);
-  }
+.App {
+    padding: 0 1rem;
+}
 
-  nav {
-      background: var(--element-color);
-      margin: 0 -1rem;
-      margin-bottom: 1.5rem;
-      padding: 1.4rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  }
+.App.dark-theme {
+    background: var(--bg-color-dark);
+}
 
-  nav h1 {
-      font-size: 1rem;
-  }
+.App.dark-theme nav {
+    color: var(--text-color-dark);
+    background: var(--element-color-dark);
+}
 
-  input[type=checkbox]{
-	height: 0;
-	width: 0;
+.App.dark-theme .search {
+    color: var(--text-color-dark);
+    background: var(--input-color-dark);
+}
+
+.App.dark-theme .search-icon {
+    color: var(--text-color-dark);
+}
+
+.App.dark-theme .search::placeholder {
+    color: var(--text-color-dark);
+}
+
+.App.dark-theme .search:focus {
+    border: 1px solid var(--text-color-dark);
+    outline: none;
+}
+
+.App.dark-theme .dropdown-menu {
+    color: var(--text-color-dark);
+    background: var(--element-color-dark);
+}
+
+.App.dark-theme .dropdown-btn {
+    color: var(--text-color-dark);
+    background: var(--element-color-dark);
+}
+
+.App.dark-theme .dropdown-item {
+    color: var(--text-color-dark);
+}
+
+.App.dark-theme .card {
+    color: var(--text-color-dark);
+    background: var(--element-color-dark);
+}
+
+nav, .search, .dropdown-btn, .dropdown-menu, .card, .back-btn {
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .06), 0 -1px 0 0 rgba(0, 0, 0, .08);
+}
+
+nav {
+    background: var(--element-color);
+    margin: 0 -1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.4rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    font-size: 1rem;
+}
+
+input[type=checkbox] {
+    height: 0;
+    width: 0;
     visibility: hidden;
-} 
+}
 
 label {
-	cursor: pointer;
-	text-indent: -9999px;
-	width: 50px;
-	height: 25px;
-	background: hsl(207, 26%, 17%);
-	display: block;
-	border-radius: 50px;
-	position: relative;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 50px;
+    height: 25px;
+    background: hsl(207, 26%, 17%);
+    display: block;
+    border-radius: 50px;
+    position: relative;
 }
 
 label:after {
-	content: '';
-	position: absolute;
-	top: 2.5px;
-	left: 2.5px;
-	width: 20px;
-	height: 20px;
-	background: #fff;
-	border-radius: 20px;
-	transition: 0.3s;
+    content: '';
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 20px;
+    transition: 0.3s;
 }
 
-input:checked + label {
-	background: #FFF;
+input:checked+label {
+    background: #f0ece3;
 }
 
-input:checked + label:after {
-	left: calc(100% - 2.5px);
+input:checked+label:after {
+    left: calc(100% - 2.5px);
     transform: translateX(-100%);
     background: hsl(207, 26%, 17%);
 }
 
 label:active:after {
-	width: 20px;
+    width: 20px;
 }
 
-  .search {
-      color: var(--text-color);
-      background: var(--element-color);
-      border: none;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      padding: 1rem 1.3rem;
-      padding-left: 4rem;
-      margin-bottom: 2rem;
-      width: 100%;
-  }
-
-  .search::placeholder {
+.search {
     color: var(--text-color);
-  }
+    background: var(--element-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    padding: 1rem 1.3rem;
+    padding-left: 4rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
 
-  .search:focus {
+.search::placeholder {
+    color: var(--text-color);
+}
+
+.search:focus {
     border: 1px solid var(--text-color);
     outline: none;
-  }
+}
 
-  .search-icon {
-      position: absolute;
-      margin: 0.8rem 1.5rem;
-  }
+.search-icon {
+    position: absolute;
+    margin: 0.8rem 1.5rem;
+}
 
-  .dropdown-elements {
-      display: flex;
-      justify-content: space-between;
-  }
+.dropdown-elements {
+    display: flex;
+    justify-content: space-between;
+}
 
-  .dropdown-btn, .dropdown-menu {
-      color: var(--text-color);
-      background: var(--element-color);
-      font-size: 0.8rem;
-      border: none;
-      border-radius: 5px;
-      width: 60%;
-      padding: 1rem 1.3rem;
-  }
+.dropdown-btn, .dropdown-menu {
+    color: var(--text-color);
+    background: var(--element-color);
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    width: 60%;
+    padding: 1rem 1.3rem;
+}
 
-  .dropdown-btn {
-      text-align: left;
-      margin-bottom: 0.3rem;
-  }
+.dropdown-btn {
+    text-align: left;
+    margin-bottom: 0.3rem;
+}
 
-  .dropdown-btn:focus {
-      outline: none;
-  }
+.dropdown-btn:focus {
+    outline: none;
+}
 
-  .dropdown-menu {
-      position: absolute;
-      z-index: 1;
-      width: 55%;
-  }
+.dropdown-menu {
+    position: absolute;
+    z-index: 1;
+    width: 55%;
+}
 
-  li {
-      color: var(--text-color);
-      list-style-type: none;
-      margin-bottom: 0.5rem;
-      cursor: pointer;
-  }
+li {
+    color: var(--text-color);
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
 
-  .card {
-      display: flex;
-      flex-direction: column;
-      width: 80%;
-      height: 20rem;
-      margin: 0 auto;
-      margin-top: 2rem;
-      color: var(--text-color);
-      background: var(--element-color);
-      border-radius: 5px;
-  }
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 20rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    color: var(--text-color);
+    background: var(--element-color);
+    border-radius: 5px;
+}
 
-  .flag {
-      border-radius: 5px 5px 0 0;
-      height: 50%;
-  }
+.card a {
+    text-decoration: none;
+}
 
-  .flag img {
-      border-radius: 5px 5px 0 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }
+.flag {
+    border-radius: 5px 5px 0 0;
+    height: 50%;
+}
 
-  .card-details {
-      padding: 1.3rem;
-  }
+.flag img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-  .card-details h1 {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-  }
+.card-details {
+    padding: 1.3rem;
+}
 
-  .card-details p {
-      font-size: 0.8rem;
-      margin-bottom: 0.3rem;
-  }
+.card-details h1 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.card-details p {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.details-container {
+    padding: 0.5rem;
+    margin-bottom: 3rem;
+}
+
+.back-btn {
+    background: var(--element-color);
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 4rem;
+    padding: 0.5rem 1.5rem;
+    width: 6.5rem;
+}
+
+.back-btn a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.back-btn a p {
+    font-size: 0.9rem;
+}
+
+.details-flag img {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+}
+
+.details-info h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.details-info p {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+}
+
+.details-info-1, .details-info-2 {
+    margin-bottom: 3rem;
+}
+

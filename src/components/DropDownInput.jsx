@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-function DropDownInput() {
+function DropDownInput(props) {
     const [reveal, setReveal] = useState(false);
 
     function DropDown() {
@@ -20,7 +20,7 @@ function DropDownInput() {
                 <button onClick={DropDown} className="dropdown-btn" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div className="dropdown-elements">
                         Filter by region
-                        <ArrowDropDownIcon fontSize="small" />
+                        <ExpandMoreIcon fontSize="small" />
                     </div>
                 </button>
 

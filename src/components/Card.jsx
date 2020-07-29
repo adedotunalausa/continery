@@ -3,15 +3,15 @@ import React from "react";
 function Card(props) {
 
     return (
-            <div className="card">    
+        <div className="card">    
             <div className="flag">
                 <img src={props.countryFlag} alt="flag"/>
             </div>
             <div className="card-details">
                 <h1>{props.countryName}</h1>
-                <p>Population: {props.countryPopulation}</p>
-                <p>Region: {props.countryRegion}</p>
-                <p>Capital: {props.countryCapital}</p>
+                <p><b>Population:</b> {props.countryPopulation}</p>
+                <p><b>Region:</b>  {props.countryRegion}</p>
+                <p><b>Capital:</b>  {props.countryCapital}</p>
             </div>
         </div>
     );

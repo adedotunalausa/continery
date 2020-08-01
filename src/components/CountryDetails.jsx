@@ -3,7 +3,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Axios from "axios"
 import { Link } from "react-router-dom";
 
-function CountryDetails({match}) {
+function CountryDetails({ match }) {
     const [countryDetails, setCountryDetails] = useState([])
 
     useEffect(() => {
@@ -15,7 +15,7 @@ function CountryDetails({match}) {
             .catch(err => {
                 console.log(err);
             })
-            console.log(match);
+        console.log(match);
     }, [match])
 
     return (
@@ -51,7 +51,9 @@ function CountryDetails({match}) {
                                 </div>
                                 <div className="border-countries">
                                     <h4><b>Border Countries:</b></h4>
-                                    {data.borders.map(data => <p>{data} </p>)}
+                                    <div>
+                                        {data.borders.map(data => <p>{data} </p>)}
+                                    </div>
                                 </div>
                             </div>
                         </div>

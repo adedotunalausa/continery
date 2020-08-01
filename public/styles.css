@@ -207,9 +207,10 @@ label:active:after {
     padding: 0.8rem 1.3rem;
 }
 
-.dropdown-btn {
-    text-align: left;
+.dropdown {
+    /* text-align: left; */
     margin-bottom: 0.3rem;
+    cursor: pointer;
 }
 
 .dropdown-btn:focus {
@@ -228,12 +229,23 @@ li {
     cursor: pointer;
 }
 
+li:hover {
+    text-decoration: underline;
+}
+
 .cards-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-bottom: 10rem;
+}
+
+.filtered-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .card {
@@ -248,8 +260,8 @@ li {
     border-radius: 5px;
 }
 
-.card a {
-    text-decoration: none;
+.card:hover {
+    box-shadow: 3px 5px 10px 4px rgba(0, 0, 0, .08), -3px -2px 10px 4px rgba(0, 0, 0, .1);
 }
 
 .flag {
@@ -347,7 +359,7 @@ li {
 
 @media screen and (min-width: 700px) {
 
-    .country-filter {
+    .filter-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -358,8 +370,9 @@ li {
         margin-bottom: 0;
     }
 
-    .dropdown-btn {
-        margin-bottom: 0;
+    .drop-down {
+        text-align: right;
+        margin-left: 10rem;
     }
 
     .dropdown-menu {
@@ -367,6 +380,7 @@ li {
     }
 
     .card {
+        width: 15rem;
         margin-bottom: 2rem;
     }
 
@@ -403,7 +417,7 @@ li {
     }
 
     .details-container {
-        text-align: left;
+        text-align: center;
     }
 
     .details-info-inner {
@@ -414,18 +428,16 @@ li {
 
     .details-container-inner {
         display: flex;
-        /* justify-content: space-evenly; */
         align-items: center;
     }
 
     .details-info h1 {
         font-size: 1rem;
-        /* margin-bottom: 1.5rem; */
+        text-align: left;
     }
     
     .details-info p {
         font-size: 0.7rem;
-        /* margin-bottom: 0.8rem; */
     }
     
     .details-info-1, .details-info-2 {
@@ -450,5 +462,10 @@ li {
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    .border-countries div {
+        width: 20rem;
+        margin-left: 1rem;
     }
 }

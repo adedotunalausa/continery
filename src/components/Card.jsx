@@ -4,7 +4,7 @@ function Card(props) {
 
     return (
         <div className="card">    
-            <div key={props.id} className="flag">
+            <div className="flag">
                 <img src={props.countryFlag} alt="flag"/>
             </div>
             <div className="card-details">

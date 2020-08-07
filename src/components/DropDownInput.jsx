@@ -15,33 +15,31 @@ function DropDownInput(props) {
     }
 
     return (
-        <div>
-            <div>
-                <button onClick={DropDown} className="dropdown-btn" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div className="dropdown-elements">
-                        Filter by region
+        <div className="dropdown-container">
+            <button onClick={DropDown} className="dropdown-btn" data-toggle="dropdown" aria-haspopup="true">
+                <div className="dropdown-elements">
+                    Filter by region
                         <ExpandMoreIcon fontSize="small" />
-                    </div>
-                </button>
+                </div>
+            </button>
 
-                {reveal ? <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li onClick={() => { props.regionSet("Africa"); setReveal(false); props.showRegionResult() }} className="dropdown-item">
-                        Africa
+            {reveal ? <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li onClick={() => { props.regionSet("Africa"); setReveal(false); props.showRegionResult() }} className="dropdown-item">
+                    Africa
                     </li>
-                    <li onClick={() => { props.regionSet("Americas"); setReveal(false); props.showRegionResult() }} className="dropdown-item">
-                        Americas
+                <li onClick={() => { props.regionSet("Americas"); setReveal(false); props.showRegionResult() }} className="dropdown-item">
+                    Americas
                     </li>
-                    <li onClick={() => { props.regionSet("Asia"); setReveal(false); props.showRegionResult() }} className="dropdown-item">
-                        Asia
+                <li onClick={() => { props.regionSet("Asia"); setReveal(false); props.showRegionResult() }} className="dropdown-item">
+                    Asia
                     </li>
-                    <li onClick={() => { props.regionSet("Europe"); setReveal(false); props.showRegionResult() }} className="dropdown-item">
-                        Europe
+                <li onClick={() => { props.regionSet("Europe"); setReveal(false); props.showRegionResult() }} className="dropdown-item">
+                    Europe
                     </li>
-                    <li onClick={() => { props.regionSet("Oceania"); setReveal(false); props.showRegionResult() }} className="dropdown-item">
-                        Oceania
+                <li onClick={() => { props.regionSet("Oceania"); setReveal(false); props.showRegionResult() }} className="dropdown-item">
+                    Oceania
                     </li>
-                </ul> : null}
-            </div>
+            </ul> : null}
         </div>
     )
 }

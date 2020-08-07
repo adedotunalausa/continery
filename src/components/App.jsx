@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
-import CountryFilter from "./CountryFilter";
+import {Hero} from "./Hero";
+import CountrySearch from "./CountrySearch";
 import DropDownInput from "./DropDownInput";
 import Card from "./Card";
 import Axios from "axios";
@@ -9,8 +10,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
     const [dataArray, setDataArray] = useState([])
-    const [countryData, setCountryData] = useState([])
-    const [country, setCountry] = useState("")
     const [regionData, setRegionData] = useState([])
     const [region, setRegion] = useState("")
     const [filtered, setFiltered] = useState(true)
@@ -28,17 +27,6 @@ function App() {
     }, [])
 
     useEffect(() => {
-        Axios.get(`https://restcountries.eu/rest/v2/name/${country}`)
-            .then(res => {
-                console.log(res);
-                setCountryData(res.data)
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }, [country])
-
-    useEffect(() => {
         Axios.get(`https://restcountries.eu/rest/v2/region/${region}`)
             .then(res => {
                 console.log(res);
@@ -49,11 +37,13 @@ function App() {
             })
     }, [region])
 
-    function handleSearch(e) {
-        e.preventDefault()
-        const event = e.target.value;
-        setCountry(event)
-    }
+    useEffect(() => {
+        const currentThemeColor = localStorage.getItem("theme-color")
+
+        if (currentThemeColor) {
+            setColorTheme(currentThemeColor)
+        }
+    }, [])
 
     function handleFilter() {
         return (
@@ -61,7 +51,7 @@ function App() {
         )
     }
 
-    function handleTheme() {
+    function handleTheme(theme) {
         setColorTheme(prevValue => {
             if (prevValue === "dark-theme") {
                 return ""
@@ -69,44 +59,32 @@ function App() {
                 return "dark-theme"
             }
         })
-        // localStorage.setItem("theme-color", prevValue)
+        localStorage.setItem("theme-color", theme)
     }
 
     const Home = () => {
         return (
             <div>
-                <div className="filter-container">
-                    <CountryFilter
-                        inputChange={handleSearch}
-                        countryValue={country}
-                        // showCountryResult={handleFilter}
-                    />
-                    <DropDownInput
-                        regionSet={setRegion}
-                        showRegionResult={handleFilter}
-                    />
-                </div>
-                <div className="filtered-cards-container">
-                    {countryData.map((data, index) => (
-                        <Link className="link" to={`/details/${data.name}`}>{
-                            <Card
-                                key = { Math.random() }
-                                countryFlag={data.flag}
-                                countryName={data.name}
-                                countryPopulation={data.population}
-                                countryRegion={data.region}
-                                countryCapital={data.capital}
-                            />
-                        }</Link>
-                    ))}
-                </div>
+                <Hero />
+            </div>
+        )
+    }
+
+    const Country = () => {
+        return (
+            <div>
+                <DropDownInput
+                    regionSet={setRegion}
+                    showRegionResult={handleFilter}
+                />
+                <CountrySearch />
                 {
                     filtered ?
                         <div className="cards-container">
-                            {dataArray.map((data, index) => (
+                            {dataArray.map((data) => (
                                 <Link className="link" to={`/details/${data.name}`}>{
                                     <Card
-                                        key = { Math.random()}
+                                        key={Math.random()}
                                         countryFlag={data.flag}
                                         countryName={data.name}
                                         countryPopulation={data.population}
@@ -117,10 +95,10 @@ function App() {
                             ))}
                         </div> :
                         <div className="filtered-cards-container">
-                            {regionData.map((data, index) => (
+                            {regionData.map((data) => (
                                 <Link className="link" to={`/details/${data.name}`}>{
                                     <Card
-                                        key = { Math.random() }
+                                        key={Math.random()}
                                         countryFlag={data.flag}
                                         countryName={data.name}
                                         countryPopulation={data.population}
@@ -140,9 +118,11 @@ function App() {
             <div className={`App ${colorTheme}`}>
                 <Header
                     addTheme={handleTheme}
+                    mode={colorTheme}
                 />
                 <Switch>
                     <Route path="/" exact component={Home} />
+                    <Route path="/countries" exact component={Country} className="countries"/>
                     <Route path="/details/:name" component={CountryDetails} />
                 </Switch>
             </div>

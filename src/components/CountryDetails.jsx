@@ -21,7 +21,7 @@ function CountryDetails({ match }) {
     return (
         <div className="details-container">
             <div className="back-btn">
-                <Link className="link" to="/">
+                <Link className="link" to="/countries">
                     <ArrowBackIcon className="back-arrow" fontSize="small" />
                     <p>Back</p>
                 </Link>

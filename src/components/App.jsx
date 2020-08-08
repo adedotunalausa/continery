@@ -1,41 +1,15 @@
-import React, { useState, useEffect } from "react";
-import Header from "./Header";
-import {Hero} from "./Hero";
-import CountrySearch from "./CountrySearch";
-import DropDownInput from "./DropDownInput";
-import Card from "./Card";
-import Axios from "axios";
-import CountryDetails from "./CountryDetails";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import Header from "./Header"
+import Home from "./Home"
+import Countries from "./Countries"
+import Maps from "./Maps"
+import { About } from "./About"
+import CountryDetails from "./CountryDetails"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Footer from "./Footer"
 
 function App() {
-    const [dataArray, setDataArray] = useState([])
-    const [regionData, setRegionData] = useState([])
-    const [region, setRegion] = useState("")
-    const [filtered, setFiltered] = useState(true)
     const [colorTheme, setColorTheme] = useState("")
-
-    useEffect(() => {
-        Axios.get("https://restcountries.eu/rest/v2/all")
-            .then(res => {
-                console.log(res);
-                setDataArray(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }, [])
-
-    useEffect(() => {
-        Axios.get(`https://restcountries.eu/rest/v2/region/${region}`)
-            .then(res => {
-                console.log(res);
-                setRegionData(res.data)
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }, [region])
 
     useEffect(() => {
         const currentThemeColor = localStorage.getItem("theme-color")
@@ -44,12 +18,6 @@ function App() {
             setColorTheme(currentThemeColor)
         }
     }, [])
-
-    function handleFilter() {
-        return (
-            setFiltered(false)
-        )
-    }
 
     function handleTheme(theme) {
         setColorTheme(prevValue => {
@@ -62,57 +30,6 @@ function App() {
         localStorage.setItem("theme-color", theme)
     }
 
-    const Home = () => {
-        return (
-            <div>
-                <Hero />
-            </div>
-        )
-    }
-
-    const Country = () => {
-        return (
-            <div>
-                <DropDownInput
-                    regionSet={setRegion}
-                    showRegionResult={handleFilter}
-                />
-                <CountrySearch />
-                {
-                    filtered ?
-                        <div className="cards-container">
-                            {dataArray.map((data) => (
-                                <Link className="link" to={`/details/${data.name}`}>{
-                                    <Card
-                                        key={Math.random()}
-                                        countryFlag={data.flag}
-                                        countryName={data.name}
-                                        countryPopulation={data.population}
-                                        countryRegion={data.region}
-                                        countryCapital={data.capital}
-                                    />
-                                }</Link>
-                            ))}
-                        </div> :
-                        <div className="filtered-cards-container">
-                            {regionData.map((data) => (
-                                <Link className="link" to={`/details/${data.name}`}>{
-                                    <Card
-                                        key={Math.random()}
-                                        countryFlag={data.flag}
-                                        countryName={data.name}
-                                        countryPopulation={data.population}
-                                        countryRegion={data.region}
-                                        countryCapital={data.capital}
-                                    />
-                                }</Link>
-                            ))}
-                        </div>
-                }
-            </div>
-        )
-    }
-
     return (
         <Router>
             <div className={`App ${colorTheme}`}>
@@ -120,14 +37,19 @@ function App() {
                     addTheme={handleTheme}
                     mode={colorTheme}
                 />
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/countries" exact component={Country} className="countries"/>
-                    <Route path="/details/:name" component={CountryDetails} />
-                </Switch>
+                <div className="app-container">
+                    <Switch>
+                        <Route path="/" exact component={Home} />
+                        <Route path="/countries" exact component={Countries} className="countries" />
+                        <Route path="/maps" exact component={Maps} className="maps" />
+                        <Route path="/about" exact component={About} className="about" />
+                        <Route path="/details/:name" component={CountryDetails} />
+                    </Switch>
+                </div>
+                <Footer />
             </div>
         </Router>
     )
 }
 
-export default App;
+export default App

@@ -41,9 +41,10 @@ const Ul = styled.ul`
 export const RightNav = ({ open, setOpen }) => {
     return (
         <Ul open={open} className="navlinks">
-            <Link className="link navlink" to={"/"} onClick={() => setOpen(!open)}><li>Home</li></Link>
-            <Link className="link navlink" to={"/countries"} onClick={() => setOpen(!open)}><li>Countries</li></Link>
-            <Link className="link navlink" to={"/maps"} onClick={() => setOpen(!open)}><li>Maps</li></Link>
+            <Link className="link navlink" to={"/"} onClick={() => setOpen(!open)}><li><i class="fas fa-home hide-icon"></i> Home</li></Link>
+            <Link className="link navlink" to={"/countries"} onClick={() => setOpen(!open)}><li><i class="fas fa-globe-europe hide-icon"></i> Countries</li></Link>
+            <Link className="link navlink" to={"/maps"} onClick={() => setOpen(!open)}><li><i class="fas fa-map-marked-alt hide-icon"></i> Maps</li></Link>
+            <Link className="link navlink" to={"/about"} onClick={() => setOpen(!open)}><li><i class="fas fa-info-circle hide-icon"></i> About</li></Link>
             <img src={menuImg} alt="menu-img" />
         </Ul>
     )

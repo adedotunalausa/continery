@@ -6,11 +6,13 @@ import Hamburger from "./Hamburger"
 function Header(props) {
     return (
         <nav>
-            <Link className="link" to={"/"}>
-                <h1>Continery</h1>
-            </Link>
-            <Hamburger />
-            <ThemeBtn mode={props.mode} addTheme={props.addTheme} />
+            <div className="nav-content">
+                <Link className="link" to={"/"}>
+                    <h1>Continery</h1>
+                </Link>
+                <Hamburger />
+                <ThemeBtn mode={props.mode} addTheme={props.addTheme} />
+            </div>
         </nav>
     )
 }

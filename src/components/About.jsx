@@ -1,8 +1,10 @@
 import React from 'react'
+import aboutImg from "./images/about-img.svg"
 
 export const About = () => {
     return (
         <div className="about-container">
+            <img src={aboutImg} alt="hero-img" />
             <h2>-- About --</h2>
             <p>
                 The purpose of Continery is to provide an easy way

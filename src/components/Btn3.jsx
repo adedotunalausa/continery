@@ -5,7 +5,7 @@ const Btn3 = () => {
     return (
         <div>
             <Link className="link" to={"/maps"}>
-                <p className="btn1">Start now <i class="fas fa-arrow-right"></i></p>
+                <p className="btn1">Start now <i className="fas fa-arrow-right"></i></p>
             </Link>
         </div>
     )

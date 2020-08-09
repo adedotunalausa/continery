@@ -5,7 +5,7 @@ export const Btn1 = () => {
     return (
         <div>
             <Link className="link" to={"/countries"}>
-                <p className="btn1">Explore</p>
+                <p className="btn1">Explore <i className="fas fa-arrow-right"></i></p>
             </Link>
         </div>
     )

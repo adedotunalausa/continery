@@ -41,50 +41,52 @@ const Countries = () => {
     }
 
     return (
-        <div className="countries-page-container">
-            <div className="countries-page-hero">
-                <div>
-                    <h1>Learn about countries and regions</h1>
-                    <p className="home-paragraph">Search for a country or filter the list of countries by region</p>
-                </div>
-                <img src={countryImg} alt="hero-img"/>
-            </div>
-            <DropDownInput
-                regionSet={setRegion}
-                showRegionResult={handleFilter}
-            />
-            <CountrySearch />
-            {
-                filtered ?
-                    <div className="cards-container">
-                        {dataArray.map((data) => (
-                            <Link className="link" to={`/details/${data.name}`}>{
-                                <Card
-                                    key={Math.random()}
-                                    countryFlag={data.flag}
-                                    countryName={data.name}
-                                    countryPopulation={data.population}
-                                    countryRegion={data.region}
-                                    countryCapital={data.capital}
-                                />
-                            }</Link>
-                        ))}
-                    </div> :
-                    <div className="filtered-cards-container">
-                        {regionData.map((data) => (
-                            <Link className="link" to={`/details/${data.name}`}>{
-                                <Card
-                                    key={Math.random()}
-                                    countryFlag={data.flag}
-                                    countryName={data.name}
-                                    countryPopulation={data.population}
-                                    countryRegion={data.region}
-                                    countryCapital={data.capital}
-                                />
-                            }</Link>
-                        ))}
+        <div className="countries-page-container-overall">
+            <div className="countries-page-container">
+                <div className="countries-page-hero">
+                    <div>
+                        <h1>Learn about countries and regions</h1>
+                        <p className="home-paragraph">Search for a country or filter the list of countries by region</p>
                     </div>
-            }
+                    <img src={countryImg} alt="hero-img" />
+                </div>
+                <DropDownInput
+                    regionSet={setRegion}
+                    showRegionResult={handleFilter}
+                />
+                <CountrySearch />
+                {
+                    filtered ?
+                        <div className="cards-container">
+                            {dataArray.map((data) => (
+                                <Link className="link" to={`/details/${data.name}`}>{
+                                    <Card
+                                        key={Math.random()}
+                                        countryFlag={data.flag}
+                                        countryName={data.name}
+                                        countryPopulation={data.population}
+                                        countryRegion={data.region}
+                                        countryCapital={data.capital}
+                                    />
+                                }</Link>
+                            ))}
+                        </div> :
+                        <div className="filtered-cards-container">
+                            {regionData.map((data) => (
+                                <Link className="link" to={`/details/${data.name}`}>{
+                                    <Card
+                                        key={Math.random()}
+                                        countryFlag={data.flag}
+                                        countryName={data.name}
+                                        countryPopulation={data.population}
+                                        countryRegion={data.region}
+                                        countryCapital={data.capital}
+                                    />
+                                }</Link>
+                            ))}
+                        </div>
+                }
+            </div>
         </div>
     )
 }

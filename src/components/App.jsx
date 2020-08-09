@@ -37,15 +37,13 @@ function App() {
                     addTheme={handleTheme}
                     mode={colorTheme}
                 />
-                <div className="app-container">
-                    <Switch>
-                        <Route path="/" exact component={Home} />
-                        <Route path="/countries" exact component={Countries} className="countries" />
-                        <Route path="/maps" exact component={Maps} className="maps" />
-                        <Route path="/about" exact component={About} className="about" />
-                        <Route path="/details/:name" component={CountryDetails} />
-                    </Switch>
-                </div>
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/countries" exact component={Countries} className="countries" />
+                    <Route path="/maps" exact component={Maps} className="maps" />
+                    <Route path="/about" exact component={About} className="about" />
+                    <Route path="/details/:name" component={CountryDetails} />
+                </Switch>
                 <Footer />
             </div>
         </Router>

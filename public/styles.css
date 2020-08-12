@@ -127,14 +127,6 @@ nav h1 {
     margin-right: 4rem;
 }
 
-.theme-sign {
-    position: absolute;
-    margin-right: 1.6rem;
-    margin-top: .17rem;
-    color: var(--element-color-dark);
-    font-size: 0.9rem;
-}
-
 input[type=checkbox] {
     height: 0;
     width: 0;
@@ -147,7 +139,7 @@ label {
     width: 50px;
     height: 25px;
     background: hsl(207, 26%, 17%);
-    opacity: 0.4;
+    opacity: 1;
     display: block;
     border-radius: 50px;
     position: relative;

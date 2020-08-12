@@ -47,7 +47,7 @@ body {
     background: var(--element-color-dark);
 }
 
-.App.dark-theme .home, .App.dark-theme .hero, .App.dark-theme .home-section3-container, .App.dark-theme ul, .App.dark-theme .countries-page-container-overall, .App.dark-theme .details-container {
+.App.dark-theme .home, .App.dark-theme .hero, .App.dark-theme .home-section3-container, .App.dark-theme ul, .App.dark-theme .countries-page-container-overall, .App.dark-theme .details-container, .App.dark-theme .about-container, .App.dark-theme .maps-container {
     background-color: var(--bg-color-dark);
 }
 
@@ -97,7 +97,7 @@ body {
     background: var(--element-color-dark);
 }
 
-nav, .search, .dropdown-btn, .dropdown-menu, .card, .back-btn, .border-countries p {
+nav, .search, .dropdown-btn, .dropdown-menu, .card, .back-btn, .border-countries p, .map-search{
     box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 5px 0px;
 }
 
@@ -204,12 +204,20 @@ label:active:after {
     text-align: center;
 }
 
+.section-one-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 15rem;
+}
+
 .btn1 {
     background-image: linear-gradient(105deg,#44d8ce,#016457);
     color: #FAFAFA;
-    width: 10rem;
-    margin: 3rem auto;
-    padding: .5rem 1rem;
+    width: 7rem;
+    margin: 2rem auto;
+    padding: .5rem .5rem;
     border-radius: 20px;
     text-align: center;
 }
@@ -218,11 +226,20 @@ label:active:after {
     color: #016457;
     border: solid 0.05rem;
     border-color: #016457;
-    width: 10rem;
-    margin: 3rem auto;
-    padding: .5rem 1rem;
+    width: 7rem;
+    margin: 2rem auto;
+    padding: .5rem .5rem;
     border-radius: 20px;
     text-align: center;
+}
+
+.btn1:hover {
+    background-image: linear-gradient(60deg,#016457, #44d8ce);
+}
+
+.btn2:hover {
+    color: var(--text-color-dark);
+    background-color: #016457;
 }
 
 .hero img{
@@ -372,11 +389,11 @@ li:hover {
     border-radius: 5px;
 }
 
-.card, .dropdown-btn, .back-btn, .search {
+.card, .dropdown-btn, .back-btn, .search, .btn2:hover, .btn1:hover {
     transition: all 0.2s ease-in 0s;
 }
 
-.card:hover, .dropdown-btn:hover, .back-btn:hover, .search:hover {
+.card:hover, .dropdown-btn:hover, .back-btn:hover, .search:hover, .btn2:hover, .btn1:hover {
     box-shadow: 0px 3px 5px 0px rgba(0, 191, 166, .2)
 }
 
@@ -478,18 +495,88 @@ li:hover {
     text-decoration: inherit;
 }
 
+.maps {
+    height: 50rem;
+}
+
 .maps-container, .about-container {
     padding: 8rem 1rem;
-    height: 100vh;
     text-align: center;
+    margin: 0 auto;
+}
+
+.maps-container-hero {
+    margin-bottom: 4rem;
 }
 
 .maps-container-hero h1 {
+    margin-bottom: 1rem;
+}
+
+.maps-container-hero p {
     margin-bottom: 5rem;
 }
 
 .maps-container-hero img {
     width: 21rem;
+}
+
+.map-search {
+    color: var(--text-color);
+    background: var(--element-color);
+    border: none;
+    border-radius: 5px;
+    margin: 2rem auto;
+    width: 95%;
+    max-width: 400px;
+}
+
+.map-search-input {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+.map-search-input::placeholder {
+    color: var(--text-color);
+    opacity: 0.4;
+}
+
+.map-search-input:focus {
+    border: 1px solid #44d8ce;
+    outline: none;
+}
+
+.bag-img {
+    width: 1.2rem;
+}
+
+.locate {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 8rem;
+    right: 8%;
+    z-index: 10;
+}
+
+.locate:focus {
+    outline: none;
+}
+
+.locate img {
+    width: 3rem;
+}
+
+.google-map {
+    margin-bottom: 5rem;
+}
+
+.about-content {
+    height: 100vh;
 }
 
 .about-container img {
@@ -502,7 +589,9 @@ li:hover {
 }
 
 .about-container p {
+    margin: 1rem auto;
     margin-bottom: 1rem;
+    max-width: 700px;
 }
 
 .footer {
@@ -627,10 +716,15 @@ li:hover {
         justify-content: space-between;
         align-items: center;
         padding-top: 2rem;
+        margin-bottom: 5rem;
     }
 
     .maps-container-hero h1{
         width: 20rem;
+    }
+
+    .maps-container-hero p {
+        margin-bottom: 0;
     }
 }
 
@@ -641,7 +735,7 @@ li:hover {
 
     nav {
         margin-bottom: 2.2rem;
-        padding: 1rem 3.5rem;
+        padding: 0.5rem 3.5rem;
         width: 100vw;
     }
 
@@ -659,6 +753,10 @@ li:hover {
 
     .hero {
         padding: 11rem 3.5rem 2rem 3.5rem;
+    }
+
+    .home-paragraph {
+        max-width: 30rem;
     }
 
     .hero h1 {
@@ -693,7 +791,7 @@ li:hover {
         padding: 10rem 3.5rem 3rem 3.5rem;
     }
 
-    .countries-page-hero h1 {
+    .countries-page-hero h1, .maps-container-hero h1 {
         font-size: 2.5rem;
         font-weight: 700;
         width: 30rem;
@@ -758,17 +856,36 @@ li:hover {
         width: 20rem;
         margin-left: 1rem;
     }
+
+    .maps-container {
+        padding: 10rem 3.5rem;
+    }
+
+    .maps-container-hero {
+        margin-bottom: 7rem;
+    }
+
+    .maps-container-hero img{
+        width: 23rem;
+    }
+
+    .locate {
+        right: 6%;
+    }
+
+    .about-container img {
+        width: 20rem;
+    }
 }
 
 @media screen and (min-width: 1240px) {
     .hero h1, .countries-page-hero h1 {
-        font-size: 4rem;
+        font-size: 3.8rem;
         line-height: 5rem;
         font-weight: 700;
     }
 
     .home-paragraph {
-        max-width: 30rem;
         font-size: 1.1rem;
     }
 
@@ -810,6 +927,16 @@ li:hover {
         margin-right: 5.5rem;
     }
 
+    .maps-container-hero h1{
+        width: 37rem;
+        font-size: 3.5rem;
+        line-height: 4.5rem;
+    }
+
+    .maps-container-hero img{
+        width: 29rem;
+    }
+
 }
 
 @media screen and (min-width: 1440px) {
@@ -818,7 +945,7 @@ li:hover {
         width: 100vw;
     }
     
-    .nav-content, .hero-container, .home-section2, .home-section3, .countries-page-container {
+    .nav-content, .hero-container, .home-section2, .home-section3, .countries-page-container, .maps-content, .about-content {
         max-width: 1440px;
         margin: 0 auto;
     }
@@ -837,7 +964,6 @@ li:hover {
     }
 
     .hero img {
-        margin-right: 3rem;
         width: 36rem;
     }
 
@@ -908,10 +1034,31 @@ li:hover {
         font-size: 1rem;
     }
 
+    .maps-container {
+        padding: 12rem 5.5rem;
+    }
+
+    .maps-container-hero h1{
+        width: 40rem;
+        font-size: 3.9rem;
+    }
+
+    .maps-container-hero img{
+        width: 34rem;
+    }
+
+    .locate {
+        right: 5%;
+    }
+
 }
 
 @media screen and (min-width: 2560px) {
     .dropdown-container {
         margin-right: 43rem;
+    }
+
+    .locate {
+        right: 22.5%;
     }
 }

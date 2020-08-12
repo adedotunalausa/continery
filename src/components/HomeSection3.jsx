@@ -8,7 +8,7 @@ const HomeSection3 = () => {
             <div className="home-section3">
                 <div>
                     <h2>Navigate through maps of regions around the world</h2>
-                    <p className="home-paragraph">Feed your curiosity with information from well detailed maps. View satelite images of locations around the world </p>
+                    <p className="home-paragraph">Feed your curiosity with information from well detailed maps. Search and explore locations around the world </p>
                     <Btn3 />
                 </div>
                 <img src={mapsImg} alt="section3-img" />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Header from "./Header"
 import Home from "./Home"
 import Countries from "./Countries"
-import Maps from "./Maps"
+import MapsPage from "./MapsPage"
 import { About } from "./About"
 import CountryDetails from "./CountryDetails"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
@@ -40,7 +40,7 @@ function App() {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/countries" exact component={Countries} className="countries" />
-                    <Route path="/maps" exact component={Maps} className="maps" />
+                    <Route path="/maps" exact component={MapsPage} className="maps" />
                     <Route path="/about" exact component={About} className="about" />
                     <Route path="/details/:name" component={CountryDetails} />
                 </Switch>

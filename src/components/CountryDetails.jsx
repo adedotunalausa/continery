@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Axios from "axios"
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"
+
+const pageTransition = {
+    duration: 2
+}
 
 function CountryDetails({ match }) {
     const [countryDetails, setCountryDetails] = useState([])
@@ -15,11 +20,16 @@ function CountryDetails({ match }) {
             .catch(err => {
                 console.log(err);
             })
-        console.log(match);
     }, [match])
 
     return (
-        <div className="details-container">
+        <motion.div
+            className="details-container"
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={pageTransition}
+        >
             <div className="details-content">
                 <div className="back-btn">
                     <Link className="link" to="/countries">
@@ -63,7 +73,7 @@ function CountryDetails({ match }) {
 
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

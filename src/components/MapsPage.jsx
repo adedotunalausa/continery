@@ -1,10 +1,21 @@
 import React from 'react'
 import mapsImg from "./images/mapss-page-img.svg"
 import Maps from "./Maps"
+import { motion } from "framer-motion"
+
+const pageTransition = {
+    duration: 1
+}
 
 function MapsPage() {
     return (
-        <div className="maps-container">
+        <motion.div
+            className="maps-container"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={pageTransition}
+        >
             <div className="maps-content">
                 <div className="maps-container-hero">
                     <div>
@@ -17,7 +28,7 @@ function MapsPage() {
                     <Maps />
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

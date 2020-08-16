@@ -5,6 +5,7 @@ import Card from "./Card"
 import Axios from "axios"
 import { Link } from "react-router-dom"
 import countryImg from "./images/countries-main-img.svg"
+import { motion } from "framer-motion"
 
 const Countries = () => {
     const [dataArray, setDataArray] = useState([])
@@ -15,7 +16,6 @@ const Countries = () => {
     useEffect(() => {
         Axios.get("https://restcountries.eu/rest/v2/all")
             .then(res => {
-                console.log(res);
                 setDataArray(res.data);
             })
             .catch(err => {
@@ -40,8 +40,18 @@ const Countries = () => {
         )
     }
 
+    const pageTransition = {
+        duration: 1
+    }
+
     return (
-        <div className="countries-page-container-overall">
+        <motion.div
+            className="countries-page-container-overall"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={pageTransition}
+        >
             <div className="countries-page-container">
                 <div className="countries-page-hero">
                     <div>
@@ -87,7 +97,7 @@ const Countries = () => {
                         </div>
                 }
             </div>
-        </div>
+        </motion.div>
     )
 }
 

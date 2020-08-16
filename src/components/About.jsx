@@ -1,9 +1,20 @@
 import React from 'react'
 import aboutImg from "./images/about-img.svg"
+import {motion} from "framer-motion"
+
+const pageTransition = {
+    duration: 1
+}
 
 export const About = () => {
     return (
-        <div className="about-container">
+        <motion.div
+            className="about-container"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={pageTransition}
+        >
             <div className="about-content">
                 <img src={aboutImg} alt="hero-img" />
                 <h2>-- About --</h2>
@@ -20,6 +31,6 @@ export const About = () => {
                     the project, please contact the developer via email adedotunalausa@gmail.com.
                 </p>
             </div>
-        </div>
+        </motion.div>
     )
 }

@@ -590,6 +590,10 @@ li:hover {
     max-width: 700px;
 }
 
+.adedotun-link:hover {
+    color: #44d8ce;
+}
+
 .footer {
     background-color: #016457;
     color: var(--text-color-dark);

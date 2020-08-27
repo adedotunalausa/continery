@@ -22,7 +22,7 @@ function MapsPage() {
                         <h1>See the maps of locations around the world</h1>
                         <p className="home-paragraph">Search for places, get suggestions on the go and markdown locations for future exploration</p>
                     </div>
-                    <img src={mapsImg} alt="hero-img" />
+                    <img src={mapsImg} alt="maps-img" />
                 </div>
                 <div className="map">
                     <Maps />

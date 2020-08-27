@@ -106,7 +106,7 @@ nav {
     margin-bottom: 1.5rem;
     padding: 1.4rem 1rem;    
     position: fixed;
-    z-index: 3;
+    z-index: 15;
     width: 100vw;
 }
 

@@ -28,7 +28,8 @@ export const About = () => {
                 </p>
                 <p>
                     If you have any questions, suggestions or would like to support
-                    the project, please contact the developer via email adedotunalausa@gmail.com.
+                    the project, please contact the developer via email adedotunalausa@gmail.com
+                    or visit <a className="link" href="https://adedotunalausa.com/">adedotunalausa.com</a>
                 </p>
             </div>
         </motion.div>
